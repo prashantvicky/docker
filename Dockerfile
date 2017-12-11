@@ -1,6 +1,6 @@
 FROM alpine:3.3
 
-ENTRYPOINT ["cd /root ; /bin/kubectl create -f 'kafka_pv.yml,cass.yml,etcd_pv.yml,redisprimary_pv.yml'"]
+ENTRYPOINT ["cd /root ; /bin/kubectl create -f 'kafka_pv.yml,zookeeper_pv.yml,etcd_pv.yml,redisprimary_pv.yml'"]
 
 ENV KUBE_LATEST_VERSION="v1.5.4"
  WORKDIR /pv
