@@ -3,8 +3,8 @@ FROM alpine:3.3
 ENTRYPOINT ["cd /root ; /bin/kubectl create -f 'kafka_pv.yml,zookeeper_pv.yml,etcd_pv.yml,redisprimary_pv.yml'"]
 
 ENV KUBE_LATEST_VERSION="v1.5.4"
- WORKDIR /pv
- ADD . /root
+ WORKDIR /app
+ ADD . /app
  
  RUN apk add --update ca-certificates \
  && apk add --update -t deps curl \
