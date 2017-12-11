@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: datazookeeper0-default
+  namespace: default
+  labels:
+    app: zookeeper
+    namespace: default
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /tmp/default/dotricorder03/data-zookeeper-0
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: datazookeeper1-default
+  namespace: default
+  labels:
+    app: zookeeper
+    namespace: default
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 5Gi
+  hostPath:
+    path: /tmp/default/dotricorder03/data-zookeeper-1
