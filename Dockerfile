@@ -1,14 +1,20 @@
-FROM alpine:3.3
+# Use an official Python runtime as a base image
+FROM python:2.7-slim
 
-ENTRYPOINT ["cd /root ; /bin/kubectl create -f 'kafka_pv.yml,zookeeper_pv.yml,etcd_pv.yml,redisprimary_pv.yml'"]
+# Set the working directory to /app
+WORKDIR /app
 
-ENV KUBE_LATEST_VERSION="v1.5.4"
- WORKDIR /app
- ADD . /app
- 
- RUN apk add --update ca-certificates \
- && apk add --update -t deps curl \
- && curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBE_LATEST_VERSION}/bin/linux/amd64/kubectl -o /bin/kubectl \
- && chmod +x /bin/kubectl \
- && apk del --purge deps \
- && ADD *.yml /root
+# Copy the current directory contents into the container at /app
+ADD . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
