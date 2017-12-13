@@ -1,0 +1,42 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: datadir-kafka-0
+  namespace: default
+  labels:
+    app: kafka
+    namespace: default
+    cluster: kafka
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      app: kafka
+      namespace: default
+      cluster: kafka
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: datadir-kafka-1
+  namespace: default
+  labels:
+    app: kafka
+    namespace: default
+    cluster: kafka
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      app: kafka
+      namespace: default
+      cluster: kafka
