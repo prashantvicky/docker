@@ -1,0 +1,23 @@
+{
+  "kind": "ConfigMap",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "fluentd-config",
+    "namespace": "default",
+    "selfLink": "/api/v1/namespaces/default/configmaps/fluentd-config",
+    "uid": "b36b46a5-c959-11e7-88a7-005056916bb0",
+    "resourceVersion": "10192714",
+    "creationTimestamp": "2017-11-14T16:34:35Z",
+    "labels": {
+      "app": "fluentd",
+      "comp-group": "fluentd",
+      "namespace": "default"
+    },
+    "annotations": {
+      "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"data\":{\"fluent.conf\":\"# default logs\\n\\u003csource\\u003e\\n  @type tail\\n  path /var/log/containers/*.log\\n  pos_file fluentd.pos\\n  time_format %Y-%m-%dT%H:%M:%S.%NZ\\n  tag kubernetes.*\\n  format json\\n  read_from_head true\\n  keep_time_key false \\n\\u003c/source\\u003e\\n\\n# {\\\"log\\\":\\\"INFO component 1 url=/HelloWorld/Hello-World/Hello_World/, message=\\\\\\\"New request received.\\\\\\\"\\\\n\\\",\\\"stream\\\":\\\"stderr\\\",\\\"time\\\":\\\"2017-05-11T19:38:56.833001533Z\\\"}\\n\\u003csource\\u003e\\n  @type tail\\n  path /var/log/containers/*.log\\n  pos_file go-log.pos\\n  tag kubernetes.*\\n  format multi_format\\n  \\u003cpattern\\u003e\\n    format /\\\"log\\\"\\\\s*:\\\\s*\\\"(?\\u003clog\\u003e(?\\u003clevel\\u003e[^ ]*)\\\\s+(?\\u003ccomponent\\u003e[^ ]*)\\\\s+(?\\u003cthread\\u003e[^ ]*)\\\\s+url=(?\\u003curl\\u003e[^ ]*),(?=.*(?\\u003cmessage\\u003e(?\\u003c=\\\\smessage=\\\\\\\\\\\").*(?=\\\\\\\\\\\"))).*\\\"\\\\s*,\\\\s*\\\"stream\\\"\\\\s*:\\\\s*\\\"(?\\u003cstream\\u003e[^.*?]*)\\\"\\\\s*,\\\\s*\\\"time\\\"\\\\s*:\\\\s*\\\"(?\\u003cgo_time\\u003e[^\\\\s]*))\\\"/\\n    time_format %Y-%m-%dT%H:%M:%S.%NZ\\n    time_key @time\\n    types thread:integer\\n  \\u003c/pattern\\u003e\\n  \\u003cpattern\\u003e\\n    format none\\n  \\u003c/pattern\\u003e\\n  read_from_head true\\n  #time_key @time\\n\\u003c/source\\u003e\\n\\n\\u003cfilter kubernetes.**\\u003e\\n  @type kubernetes_metadata\\n\\u003c/filter\\u003e\\n\\n@include kubernetes.conf\\n\\n\\u003cmatch **\\u003e\\n  @type elasticsearch\\n  logstash_format true\\n  host elasticsearch\\n  port 9200\\n  include_tag_key true\\n  buffer_chunk_limit 16M\\n  buffer_queue_limit 4096\\n  flush_interval 10s # for testing\\n  max_retry_wait 10s\\n  disable_retry_limit\\n  reload_connections false\\n\\u003c/match\\u003e\\n\\n\\u003cmatch fluent.**\\u003e\\n  type null\\n\\u003c/match\\u003e\"},\"kind\":\"ConfigMap\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"fluentd\",\"comp-group\":\"fluentd\",\"namespace\":\"default\"},\"name\":\"fluentd-config\",\"namespace\":\"default\"}}\n"
+    }
+  },
+  "data": {
+    "fluent.conf": "# default logs\n<source>\n  @type tail\n  path /var/log/containers/*.log\n  pos_file fluentd.pos\n  time_format %Y-%m-%dT%H:%M:%S.%NZ\n  tag kubernetes.*\n  format json\n  read_from_head true\n  keep_time_key false \n</source>\n\n# {\"log\":\"INFO component 1 url=/HelloWorld/Hello-World/Hello_World/, message=\\\"New request received.\\\"\\n\",\"stream\":\"stderr\",\"time\":\"2017-05-11T19:38:56.833001533Z\"}\n<source>\n  @type tail\n  path /var/log/containers/*.log\n  pos_file go-log.pos\n  tag kubernetes.*\n  format multi_format\n  <pattern>\n    format /\"log\"\\s*:\\s*\"(?<log>(?<level>[^ ]*)\\s+(?<component>[^ ]*)\\s+(?<thread>[^ ]*)\\s+url=(?<url>[^ ]*),(?=.*(?<message>(?<=\\smessage=\\\\\").*(?=\\\\\"))).*\"\\s*,\\s*\"stream\"\\s*:\\s*\"(?<stream>[^.*?]*)\"\\s*,\\s*\"time\"\\s*:\\s*\"(?<go_time>[^\\s]*))\"/\n    time_format %Y-%m-%dT%H:%M:%S.%NZ\n    time_key @time\n    types thread:integer\n  </pattern>\n  <pattern>\n    format none\n  </pattern>\n  read_from_head true\n  #time_key @time\n</source>\n\n<filter kubernetes.**>\n  @type kubernetes_metadata\n</filter>\n\n@include kubernetes.conf\n\n<match **>\n  @type elasticsearch\n  logstash_format true\n  host elasticsearch\n  port 9200\n  include_tag_key true\n  buffer_chunk_limit 16M\n  buffer_queue_limit 4096\n  flush_interval 10s # for testing\n  max_retry_wait 10s\n  disable_retry_limit\n  reload_connections false\n</match>\n\n<match fluent.**>\n  type null\n</match>"
+  }
+}
