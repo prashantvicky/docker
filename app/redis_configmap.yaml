@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-config
+  namespace: default
+  labels:
+    comp-group: redis
+    namespace: default
+data:
+  redis-server.conf: |-
+     bind "0.0.0.0"
+     protected-mode "no"
+     notify-keyspace-events "KA"
