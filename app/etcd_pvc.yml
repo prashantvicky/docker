@@ -1,0 +1,38 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: etcd-data-etcd-0
+  namespace: default
+  labels:
+    app: etcd
+    namespace: default
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      app: etcd
+      namespace: default
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: etcd-data-etcd-1
+  namespace: default
+  labels:
+    app: etcd
+    namespace: default
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      app: etcd
+      namespace: default
