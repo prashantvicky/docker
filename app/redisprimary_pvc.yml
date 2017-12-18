@@ -1,0 +1,46 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: redisprimary-0
+  namespace: default
+  labels:
+    app: redis-primary
+    namespace: default
+    comp-group: redis
+    podindex: "0"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      app: redis-primary
+      namespace: default
+      comp-group: redis
+      podindex: "0"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: redisprimary-1
+  namespace: default
+  labels:
+    app: redis-primary
+    namespace: default
+    comp-group: redis
+    podindex: "1"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      app: redis-primary
+      namespace: default
+      comp-group: redis
+      podindex: "1"
