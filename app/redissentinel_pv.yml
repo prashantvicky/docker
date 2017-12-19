@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: redissecondary0-default
+  name: redissentinel0-default
   namespace: default
   labels:
-    app: redissecondary
+    app: redissentinel
     namespace: default
     podindex: "0"
 spec:
@@ -14,15 +14,15 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /tmp/default/dotricorder03/data-dirredissecondary-0
+    path: /tmp/default/dotricorder03/data-dirredissentinel-0
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: redissecondary1-default
+  name: redissentinel1-default
   namespace: default
   labels:
-    app: redissecondary
+    app: redissentinel
     namespace: default
     podindex: "1"
 spec:
@@ -31,4 +31,4 @@ spec:
   capacity:
     storage: 5Gi
   hostPath:
-    path: /tmp/default/dotricorder03/data-dirredissecondary-1
+    path: /tmp/default/dotricorder03/data-dirredissentinel-1

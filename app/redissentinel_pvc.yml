@@ -2,10 +2,10 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: datadir-redissecondary-0
+  name: datadir-redissentinel-0
   namespace: default
   labels:
-    app: redissecondary
+    app: redissentinel
     namespace: default
     podindex: "0"
 spec:
@@ -16,17 +16,17 @@ spec:
       storage: 5Gi
   selector:
     matchLabels:
-      app: redissecondary
+      app: redissentinel
       namespace: default
       podindex: "0"
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: datadir-redissecondary-1
+  name: datadir-redissentinel-1
   namespace: default
   labels:
-    app: redissecondary
+    app: redissentinel
     namespace: default
     podindex: "1"
 spec:
@@ -37,6 +37,6 @@ spec:
       storage: 5Gi
   selector:
     matchLabels:
-      app: redissecondary
+      app: redissentinel
       namespace: default
       podindex: "1"
