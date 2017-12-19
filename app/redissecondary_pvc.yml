@@ -1,0 +1,42 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: datadir-redissecondary-0
+  namespace: default
+  labels:
+    app: redissecondary
+    namespace: default
+    podindex: "0"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      app: redissecondary
+      namespace: default
+      podindex: "0"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: datadir-redissecondary-1
+  namespace: default
+  labels:
+    app: redissecondary
+    namespace: default
+    podindex: "1"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      app: redissecondary
+      namespace: default
+      podindex: "1"
