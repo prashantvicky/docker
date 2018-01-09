@@ -5,9 +5,8 @@ metadata:
   name: redisprimary0-default
   namespace: default
   labels:
-    app: redis-primary
+    app: redisprimary
     namespace: default
-    comp-group: redis
     podindex: "0"
 spec:
   capacity:
@@ -23,9 +22,8 @@ metadata:
   name: redisprimary1-default
   namespace: default
   labels:
-    app: redis-primary
+    app: redisprimary
     namespace: default
-    comp-group: redis
     podindex: "1"
 spec:
   accessModes:
