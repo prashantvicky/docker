@@ -1,0 +1,38 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: data-cassandra-0
+  namespace: default
+  labels:
+    app: cassandra
+    namespace: default
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      app: cassandra
+      namespace: default
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: data-cassandra-1
+  namespace: default
+  labels:
+    app: cassandra
+    namespace: default
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  selector:
+    matchLabels:
+      app: cassandra
+      namespace: default
