@@ -1,0 +1,1 @@
+cat /app/app/fluentd_config_test.yaml | sed  's/:{{namespace}}/:\\"$1\\"/g'   |sed 's/\/{{namespace}}/\/$1/g' | sed 's/{{namespace}}/\"$1\"/g' | kubectl apply -f -
