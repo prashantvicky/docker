@@ -14,3 +14,5 @@ ENV KUBE_LATEST_VERSION="v1.5.4"
  && chmod +x /bin/kubectl \
  && apk del --purge deps \
  && rm /var/cache/apk/* 
+
+RUN chmod +x fixed.sh
