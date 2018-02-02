@@ -1,8 +1,8 @@
 FROM alpine:3.5
 
-ENTRYPOINT ["/bin/kubectl"]
+#ENTRYPOINT ["/bin/kubectl"]
 # Set the working directory to /app
-WORKDIR /app
+#WORKDIR /app
 
 # Copy the current directory contents into the container at /app
 ADD . /app
@@ -15,4 +15,4 @@ ENV KUBE_LATEST_VERSION="v1.5.4"
  && apk del --purge deps \
  && rm /var/cache/apk/* 
 
-RUN chmod +x app/fixed.sh
+RUN chmod +x app/app/fixed.sh
